@@ -6,27 +6,27 @@
 
 <div id="inputDiv">
     <h2>Add New Entry</h2>
-    <form action="">
+    <form ng.model="vm.newEntry" ng-submit="vm.addNewEntry()" action="">
         <div>
             <md-input-container>
-                <input value="" type="text" placeholder="What did you do?">
+                <input ng-model="vm.newEntry.description" value="vm..newEntry.description" type="text" placeholder="What did you do?">
             </md-input-container>
         </div>
         <div>
-            <select name="" id="">
+            <select>
                 <option value="">
                     --Select Project--
                 </option>
-                <option value="">
-
+                <option value="vm.project_id">
+                    Time Tracker
                 </option>
             </select>
             <!-- <md-datepicker md-placeholder="Enter Date"></md-datepicker> -->
             <md-input-container>
-                <input value="" type="text" placeholder="Start Time">
+                <input ng-model="vm.newEntry.start_time" value="vm.newEntry.start_time" type="time" placeholder="Start Time">
             </md-input-container>
             <md-input-container>
-                <input value="" type="text" placeholder="End Time">
+                <input value="vm.newEntry.end_time" type="text" placeholder="End Time">
             </md-input-container>
             <button>Submit Entry</button>
             
