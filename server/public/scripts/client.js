@@ -1,4 +1,4 @@
-const app = angular.module('TimeApp', ['ngRoute']);
+const app = angular.module('TimeApp', ['ngRoute', 'ngMaterial']);
 
 app.config(['$routeProvider', function ($routeProvider) {
     $routeProvider

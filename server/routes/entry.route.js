@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
     pool.query(`SELECT "entry".description, "entry".date, "entry".start_time, "entry".end_time, "project".name 
                 FROM "entry"
                 JOIN "project" 
-                ON "project"."id" = "entry"."project_id";;`)
+                ON "project"."id" = "entry"."project_id";`)
     .then((results) => {
         res.send(results.rows);
     })

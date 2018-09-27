@@ -6,10 +6,10 @@
 
 <div id="inputDiv">
     <h2>Add New Entry</h2>
-    <form ng-model="vm.newEntry" ng-submit="vm.addNewEntry()">
+    <form ng-model="vm.newEntry" ng-submit="vm.addNewEntry(vm.newEntry)">
         <div>
-            <md-input-container>
-                <input ng-model="vm.newEntry.description" value="vm.newEntry.description" type="text" placeholder="What did you do?">
+            <md-input-container width="100%">
+                <input ng-model="vm.newEntry.description" type="text" placeholder="What did you do?">
             </md-input-container>
         </div>
         <div>
@@ -17,65 +17,68 @@
                 <option value="">
                     --Select Project--
                 </option>
-                <option value="vm.project_id">
+                <option value="vm.newEntry.project_id">
                     Time Tracker
                 </option>
             </select>
-            <!-- <md-datepicker md-placeholder="Enter Date"></md-datepicker> -->
             <md-input-container>
-                <input ng-model="vm.newEntry.start_time" type="time" placeholder="Start Time">
+                <md-datepicker ng-model="vm.newEntry.date" placeholder="Enter Date"></md-datepicker>
             </md-input-container>
             <md-input-container>
-                <input ng-model="vm.newEntry.end_time" type="time" placeholder="End Time">
+                <input ng-model="vm.newEntry.start_time" type="text" placeholder="Start Time">
             </md-input-container>
-            <button>Submit Entry</button>
-
+            <md-input-container>
+                <input ng-model="vm.newEntry.end_time" type="text" placeholder="End Time">
+            </md-input-container>
+            <md-button class="md-raised md-primary">Submit</md-button>
         </div>
     </form>
-    <div id="historyDiv" width="100%">
-        <h3>
-            Entry History
-        </h3>
-        <table width="100%">
-            <thead width="100%">
-                <tr>
-                    <th width="35%">
-                        Entry
-                    </th>
-                    <th width="20%">
-                        Project
-                    </th>
-                    <th width="10%">
-                        Date
-                    </th>
-                    <th width="15%">
-                        Time
-                    </th>
-                    <th width="10%">
-                        Delete
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="entry in vm.history">
-                    <td>
-                        {{entry.description}}
-                    </td>
-                    <td>
-                        {{entry.name}}
-                    </td>
-                    <td>
-                        {{entry.date}}
-                    </td>
-                    <td>
-                        
-                    </td>
-                    <td>
-                        <button ng-click="vm.deleteEntry(entry)">Delete Entry</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+</div>
+
+<div id="historyDiv" width="100%">
+    <h3>
+        Entry History
+    </h3>
+    <table width="100%">
+        <thead width="100%">
+            <tr>
+                <th width="35%">
+                    Entry
+                </th>
+                <th width="20%">
+                    Project
+                </th>
+                <th width="10%">
+                    Date
+                </th>
+                <th width="15%">
+                    Time
+                </th>
+                <th width="10%">
+                    Delete
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="entry in vm.history">
+                <td>
+                    {{entry.description}}
+                </td>
+                <td>
+                    {{entry.name}}
+                </td>
+                <td>
+                    {{entry.date}}
+                </td>
+                <td>
+
+                </td>
+                <td>
+                    <button ng-click="vm.deleteEntry(entry)">Delete Entry</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 </div>
