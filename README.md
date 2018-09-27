@@ -12,7 +12,8 @@ CREATE TABLE "project"(
 CREATE TABLE "entry"(
 	"id" SERIAL PRIMARY KEY,
 	"description" VARCHAR(255) NOT NULL,
-	"start_time" TIMESTAMP NOT NULL,
-	"end_time" TIMESTAMP NOT NULL,
+	"date" DATE NOT NULL,
+	"start_time" TIME NOT NULL,
+	"end_time" TIME NOT NULL,
 	"project_id" INTEGER REFERENCES "project"
 );
