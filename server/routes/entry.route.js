@@ -1,5 +1,5 @@
 //Requires
-const express = require('express);')
+const express = require('express')
 const router = express.Router();
 const pool = require('../modules/pool');
 
@@ -24,7 +24,6 @@ router.get('/', (req, res) => {
                 ON "project"."id" = "entry"."project_id";;`)
     .then((results) => {
         res.send(results.rows);
-        res.sendStatus(200);
     })
     .catch((error) => {
         console.log('Error making GET: ', error);
