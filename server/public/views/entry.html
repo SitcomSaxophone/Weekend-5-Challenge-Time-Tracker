@@ -6,19 +6,18 @@
 
 <div id="inputDiv">
     <h2>Add New Entry</h2>
-    <form>
+    <form ng-model="vm.newEntry" >
         <div>
             <md-input-container width="100%">
                 <input ng-model="vm.newEntry.description" type="text" placeholder="What did you do?">
             </md-input-container>
         </div>
         <div>
-            <select name="repeatSelect" id="repeatSelect">
-                <option value="">--Select Project--</option>
-                <option ng-repeat="option in vm.projects" value="{{option.id}}" ng-model="vm.newEntry.project_id">{{option.name}}</option>
+            <select ng-model="vm.newEntry.project_id" ng-options="option.id as option.name for option in vm.projects">
+                <option value="">--Please Select--</option>
             </select>
             <md-input-container>
-                <md-datepicker ng-model="vm.newEntry.date" placeholder="Enter Date"></md-datepicker>
+                <md-datepicker ng-model="vm.newEntry.date" type="text" placeholder="Enter Date"></md-datepicker>
             </md-input-container>
             <md-input-container>
                 <input ng-model="vm.newEntry.start_time" type="text" placeholder="Start Time">
@@ -26,7 +25,7 @@
             <md-input-container>
                 <input ng-model="vm.newEntry.end_time" type="text" placeholder="End Time">
             </md-input-container>
-            <md-button class="md-raised md-primary" ng-click="vm.addNewEntry(vm.newEntry)">Submit</md-button>
+            <md-button class="md-raised md-primary" ng-click="vm.addNewEntry()">Submit</md-button>
         </div>
     </form>
 </div>
