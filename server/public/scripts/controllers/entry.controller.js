@@ -54,7 +54,7 @@ app.controller('EntryController', ['$http', function ($http) {
     vm.deleteEntry = function (data) {
         $http({
             method: 'DELETE',
-            url: '/entries'
+            url: `/entries/${data.id}`
         })
         .then(function () {
             vm.getEntries();

@@ -36,7 +36,7 @@ app.controller('ProjectsController', ['$http', function ($http) {
     vm.deleteProject = function (data) {
         $http({
             method: 'DELETE',
-            url: '/projects'
+            url: `/projects/${data.id}`
         })
         .then(function () {
             vm.getProjects();
