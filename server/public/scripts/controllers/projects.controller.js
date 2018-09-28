@@ -11,6 +11,7 @@ app.controller('ProjectsController', ['$http', function ($http) {
         })
         .then(function () {
             vm.getProjects();
+            vm.newProject = {};
         })
         .catch(function () {
             alert('Error making POST: ', error);
@@ -31,4 +32,17 @@ app.controller('ProjectsController', ['$http', function ($http) {
     }; // end getProjects
 
     vm.getProjects();
+
+    vm.deleteProject = function (data) {
+        $http({
+            method: 'DELETE',
+            url: '/projects'
+        })
+        .then(function () {
+            vm.getProjects();
+        })
+        .catch(function (error) {
+            alert('Error making DELETE: ', error);
+        });
+    };
 }]);
