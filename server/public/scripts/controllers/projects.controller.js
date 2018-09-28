@@ -16,7 +16,7 @@ app.controller('ProjectsController', ['$http', function ($http) {
         .catch(function () {
             alert('Error making POST: ', error);
         });
-    };
+    }; // end addNewProject
  
     vm.getProjects = function () {
         $http({
@@ -44,5 +44,5 @@ app.controller('ProjectsController', ['$http', function ($http) {
         .catch(function (error) {
             alert('Error making DELETE: ', error);
         });
-    };
+    }; // end deleteProject
 }]);

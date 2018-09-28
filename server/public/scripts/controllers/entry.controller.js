@@ -50,4 +50,17 @@ app.controller('EntryController', ['$http', function ($http) {
 
     vm.getProjects();
     vm.getEntries();
+
+    vm.deleteEntry = function (data) {
+        $http({
+            method: 'DELETE',
+            url: '/entries'
+        })
+        .then(function () {
+            vm.getEntries();
+        })
+        .catch(function (error) {
+            alert('Error making DELETE: ', error);
+        });
+    }; // end deleteEntry
 }]);
