@@ -19,7 +19,7 @@ router.post('/', (req, res) => {
 });
 
 router.get('/', (req, res) => {
-    pool.query(`SELECT "entry".description, "entry".date, "entry".start_time, "entry".end_time, "project".name 
+    pool.query(`SELECT "entry".id, "entry".description, "entry".date, "entry".start_time, "entry".end_time, "project".name 
                 FROM "entry"
                 JOIN "project" 
                 ON "project"."id" = "entry"."project_id";`)
@@ -28,6 +28,19 @@ router.get('/', (req, res) => {
     })
     .catch((error) => {
         console.log('Error making GET: ', error);
+        res.sendStatus(500);
+    });
+});
+
+router.delete('/:id', (req, res) => {
+    let id = req.params.id;
+    pool.query(`DELETE FROM "entry"
+                WHERE "id" = $1;`, [id])
+    .then(() => {
+        res.sendStatus(200);
+    })
+    .catch((error) => {
+        console.log('Error making DELETE: ', error);
         res.sendStatus(500);
     });
 });
