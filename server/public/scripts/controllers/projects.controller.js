@@ -12,7 +12,7 @@ app.controller('ProjectsController', ['$http', function ($http) {
         .catch(function (error) {
             alert('Error making GET: ', error);
         });
-    };
+    }; // end getProjects
 
     vm.getProjects();
 }]);

@@ -8,21 +8,27 @@
     <table width="100%">
         <thead>
             <tr>
-                <th width="70%">
+                <th width="50%">
                     Projects
                 </th>
                 <th width="30%">
+                    Contributions
+                </th>
+                <th width="20%">
                     Time Spent
                 </th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="project in vm.projects">
-                <td>
+                <td class="projectListing">
                     {{project.name}}
                 </td>
-                <td>
-                    
+                <td class="projectListing">
+                    <a href="#!/entries">Add new entry</a>
+                </td>
+                <td class="projectListing">
+
                 </td>
             </tr>
         </tbody>

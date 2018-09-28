@@ -15,3 +15,7 @@ thead tr th {
 tbody tr td {
     border: 1px solid black
 }
+
+.projectListing {
+    text-align: center
+}
