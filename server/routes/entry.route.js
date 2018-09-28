@@ -16,7 +16,7 @@ router.post('/', (req, res) => {
             console.log('Error making POST: ', error);
             res.sendStatus(500);
         });
-});
+}); // end POST
 
 router.get('/', (req, res) => {
     pool.query(`SELECT "entry".id, "entry".description, "entry".date, "entry".start_time, "entry".end_time, "project".name 
@@ -30,7 +30,7 @@ router.get('/', (req, res) => {
         console.log('Error making GET: ', error);
         res.sendStatus(500);
     });
-});
+}); // end GET
 
 router.delete('/:id', (req, res) => {
     let id = req.params.id;
@@ -43,6 +43,6 @@ router.delete('/:id', (req, res) => {
         console.log('Error making DELETE: ', error);
         res.sendStatus(500);
     });
-});
+}); // end DELETE
 
 module.exports = router;

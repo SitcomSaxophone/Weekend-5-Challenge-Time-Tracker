@@ -9,14 +9,14 @@ router.post('/', (req, res) => {
     pool.query(`INSERT INTO "project"("name")
                 VALUES($1);`,
                 [entry.name])
-        .then(() => {
-            res.sendStatus(201);
-        })
-        .catch((error) => {
-            console.log('Error making POST: ', error);
-            res.sendStatus(500);
-        });
-});
+    .then(() => {
+        res.sendStatus(201);
+    })
+    .catch((error) => {
+        console.log('Error making POST: ', error);
+        res.sendStatus(500);
+    });
+}); // end POST
 
 router.get('/', (req, res) => {
     pool.query(`SELECT * FROM "project";`)
@@ -27,7 +27,7 @@ router.get('/', (req, res) => {
         console.log('Error making GET: ', error);
         res.sendStatus(500);
     });
-});
+}); // end GET
 
 router.delete('/:id', (req, res) => {
     let id = req.params.id;
@@ -40,7 +40,7 @@ router.delete('/:id', (req, res) => {
         console.log('Error making DELETE: ', error);
         res.sendStatus(500);
     });
-});
+}); // end DELETE
 
 //Exports
 module.exports = router;
