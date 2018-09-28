@@ -4,6 +4,18 @@
     </h1>
 </header>
 
+<div width="100%">
+    <h3>
+        Create Project
+    </h3>
+    <form>
+        <md-input-container width="100%">
+            <input ng-model="vm.newProject.name" type="text" placeholder="Project Name">
+        </md-input-container>
+        <md-button ng-click="vm.addNewProject()" class="md-raised md-primary">Submit</md-button>
+    </form>
+</div>
+
 <div id="tableDiv">
     <table width="100%">
         <thead>

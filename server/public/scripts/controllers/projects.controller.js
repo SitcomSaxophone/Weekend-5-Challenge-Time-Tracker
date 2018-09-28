@@ -1,6 +1,22 @@
 app.controller('ProjectsController', ['$http', function ($http) {
     let vm = this;
 
+    vm.newProject = {};
+
+    vm.addNewProject = function () {
+        $http({
+            method: 'POST',
+            url: '/projects',
+            data: vm.newProject
+        })
+        .then(function () {
+            vm.getProjects();
+        })
+        .catch(function () {
+            alert('Error making POST: ', error);
+        });
+    };
+ 
     vm.getProjects = function () {
         $http({
             method: 'GET',
