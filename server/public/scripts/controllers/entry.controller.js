@@ -24,7 +24,9 @@ app.controller('EntryController', ['$http', function ($http) {
         })
         .then(function (response) {
             vm.history = response.data;
-            console.log(vm.history);
+            for (let value of vm.history) {
+                vm.entryDate = moment(value.date).format('MM/DD/YYYY');
+            };
             vm.newEntry = {};
         })
         .catch(function (error) {
@@ -39,7 +41,7 @@ app.controller('EntryController', ['$http', function ($http) {
         })
         .then(function (response) {
             for (let i = 0; i < response.data.length; i++) {
-                parseInt(response.data[i].id);   
+                parseInt(response.data[i].id);      
             };
             vm.projects = response.data;
         })
