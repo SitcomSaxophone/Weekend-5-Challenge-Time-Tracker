@@ -24,15 +24,16 @@ app.controller('EntryController', ['$http', function ($http) {
         })
             .then(function (response) {
                 vm.history = response.data;
+                console.log(vm.history);
                 for (let value of vm.history) {
-                    vm.entryDate = moment(value.date).format('MM/DD/YYYY');
                     let st = moment(value.start_time)._i;
                     let et = moment(value.end_time)._i;
                     let stSplit = st.split(":");
                     let etSplit = et.split(":");
                     value.difference = (((etSplit[0]*60 + Number(etSplit[1]) + etSplit[2]/60) - (stSplit[0]*60 + Number(stSplit[1]) + stSplit[2]/60))/60).toFixed(2);
-                    console.log(value.difference);
+                    value.entryDate = moment(value.date).format('MM/DD/YYYY');
                 };
+                
                 // let d = Integer.parsInt(c[0]) + Integer.parseInt(c[1]) / 60.0;
                 vm.newEntry = {};
             })

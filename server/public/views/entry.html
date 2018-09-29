@@ -62,11 +62,11 @@
                 <td>
                     {{entry.name}}
                 </td>
-                <td ng-model="vm.entryDate">
-                    {{vm.entryDate}}
+                <td>
+                    {{entry.entryDate}}
                 </td>
                 <td>
-                    {{entry.difference}}
+                    {{entry.difference}} hours
                 </td>
                 <td>
                     <md-button class="md-raised md-warn" ng-click="vm.deleteEntry(entry)">Delete Entry</md-button>
