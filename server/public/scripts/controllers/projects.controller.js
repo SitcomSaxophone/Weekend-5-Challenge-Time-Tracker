@@ -9,28 +9,43 @@ app.controller('ProjectsController', ['$http', function ($http) {
             url: '/projects',
             data: vm.newProject
         })
-        .then(function () {
-            vm.getProjects();
-            vm.newProject = {};
-        })
-        .catch(function () {
-            alert('Error making POST: ', error);
-        });
+            .then(function () {
+                vm.getProjects();
+                vm.newProject = {};
+            })
+            .catch(function () {
+                alert('Error making POST: ', error);
+            });
     }; // end addNewProject
- 
+
     vm.getProjects = function () {
         $http({
             method: 'GET',
             url: '/projects'
         })
-        .then(function (response) {
-            vm.projects = response.data;
-        })
-        .catch(function (error) {
-            alert('Error making GET: ', error);
-        });
+            .then(function (response) {
+                vm.getProjectTotals();
+                vm.projects = response.data;
+            })
+            .catch(function (error) {
+                alert('Error making GET: ', error);
+            });
     }; // end getProjects
 
+    vm.getProjectTotals = function () {
+        $http({
+            method: 'GET',
+            url: '/totals'
+        })
+            .then(function (response) {
+                vm.totalTimes = response.data;
+                console.log(vm.totalTimes);
+            })
+            .catch(function (error) {
+                alert('Error making GET: ', error);
+            });
+    };
+        
     vm.getProjects();
 
     vm.deleteProject = function (data) {
@@ -38,11 +53,11 @@ app.controller('ProjectsController', ['$http', function ($http) {
             method: 'DELETE',
             url: `/projects/${data.id}`
         })
-        .then(function () {
-            vm.getProjects();
-        })
-        .catch(function (error) {
-            alert('Error making DELETE: ', error);
-        });
+            .then(function () {
+                vm.getProjects();
+            })
+            .catch(function (error) {
+                alert('Error making DELETE: ', error);
+            });
     }; // end deleteProject
 }]);

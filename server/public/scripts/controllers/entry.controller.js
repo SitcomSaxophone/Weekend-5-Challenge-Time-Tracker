@@ -33,8 +33,6 @@ app.controller('EntryController', ['$http', function ($http) {
                     value.difference = (((etSplit[0]*60 + Number(etSplit[1]) + etSplit[2]/60) - (stSplit[0]*60 + Number(stSplit[1]) + stSplit[2]/60))/60).toFixed(2);
                     value.entryDate = moment(value.date).format('MM/DD/YYYY');
                 };
-                
-                // let d = Integer.parsInt(c[0]) + Integer.parseInt(c[1]) / 60.0;
                 vm.newEntry = {};
             })
             .catch(function (error) {
