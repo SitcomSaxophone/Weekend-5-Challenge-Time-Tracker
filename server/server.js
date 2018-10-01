@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const entryRouter = require('./routes/entry.route');
 const projectRouter = require('./routes/project.route');
-const totalRouter = require('./routes/projectTotals.route');
+// const totalRouter = require('./routes/projectTotals.route');
 
 // Globals
 const app = express();
@@ -14,7 +14,7 @@ app.use(bodyParser.json()); // AngularJS
 app.use(bodyParser.urlencoded({extended: true})); // JQuery
 app.use('/entries', entryRouter);
 app.use('/projects', projectRouter);
-app.use('/totals', totalRouter);
+// app.use('/totals', totalRouter);
 
 
 // Spin up server

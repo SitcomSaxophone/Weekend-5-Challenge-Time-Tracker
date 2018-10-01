@@ -2,6 +2,8 @@ app.controller('ProjectsController', ['$http', function ($http) {
     let vm = this;
 
     vm.newProject = {};
+    vm.projects;
+    let total;
 
     vm.addNewProject = function () {
         $http({
@@ -24,7 +26,7 @@ app.controller('ProjectsController', ['$http', function ($http) {
             url: '/projects'
         })
             .then(function (response) {
-                vm.getProjectTotals();
+                // vm.getProjectTotals();
                 vm.projects = response.data;
             })
             .catch(function (error) {
@@ -32,20 +34,30 @@ app.controller('ProjectsController', ['$http', function ($http) {
             });
     }; // end getProjects
 
-    vm.getProjectTotals = function () {
-        $http({
-            method: 'GET',
-            url: '/totals'
-        })
-            .then(function (response) {
-                vm.totalTimes = response.data;
-                console.log(vm.totalTimes);
-            })
-            .catch(function (error) {
-                alert('Error making GET: ', error);
-            });
-    };
-        
+    // vm.getProjectTotals = function () {
+    //     $http({
+    //         method: 'GET',
+    //         url: '/totals'
+    //     })
+    //         .then(function (response) {
+    //             vm.totalTimes = response.data;
+    //             for (let i = 0; i < total.length; i++) {
+    //                 console.log(total[i]);
+                    
+    //             }
+    //             for (let value of vm.totalTimes) {
+    //                 let st = moment(value.start_time)._i;
+    //                 let et = moment(value.end_time)._i;
+    //                 let stSplit = st.split(":");
+    //                 let etSplit = et.split(":");
+    //                 value.difference = (((etSplit[0]*60 + Number(etSplit[1]) + etSplit[2]/60) - (stSplit[0]*60 + Number(stSplit[1]) + stSplit[2]/60))/60).toFixed(2);
+    //             };
+    //         })
+    //         .catch(function (error) {
+    //             alert('Error making GET: ', error);
+    //         });
+    // }; // end getProjectTotals
+
     vm.getProjects();
 
     vm.deleteProject = function (data) {

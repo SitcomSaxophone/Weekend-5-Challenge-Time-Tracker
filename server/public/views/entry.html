@@ -55,14 +55,14 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="entry in vm.history">
+            <tr ng-repeat="entry in vm.history | orderBy:'+date'">
                 <td>
                     {{entry.description}}
                 </td>
                 <td>
                     <a href="#!/projects">{{entry.name}}</a>
                 </td>
-                <td>
+                <td orderBy="+date">
                     {{entry.entryDate}}
                 </td>
                 <td>
