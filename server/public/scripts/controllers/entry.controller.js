@@ -24,14 +24,14 @@ app.controller('EntryController', ['$http', function ($http) {
         })
             .then(function (response) {
                 vm.history = response.data;
-                console.log(vm.history);
+                // calculate the time spent on each entry
                 for (let value of vm.history) {
                     let st = moment(value.start_time)._i;
                     let et = moment(value.end_time)._i;
                     let stSplit = st.split(":");
                     let etSplit = et.split(":");
                     value.difference = (((etSplit[0]*60 + Number(etSplit[1]) + etSplit[2]/60) - (stSplit[0]*60 + Number(stSplit[1]) + stSplit[2]/60))/60).toFixed(2);
-                    value.entryDate = moment(value.date).format('MM/DD/YYYY');
+                    value.entryDate = moment(value.date).format('MM/DD/YYYY'); // format the returned entry date
                 };
                 vm.newEntry = {};
             })
@@ -46,6 +46,7 @@ app.controller('EntryController', ['$http', function ($http) {
             url: '/projects'
         })
             .then(function (response) {
+                // parse the returned project id for selecting and inputing new entries
                 for (let i = 0; i < response.data.length; i++) {
                     parseInt(response.data[i].id);
                 };

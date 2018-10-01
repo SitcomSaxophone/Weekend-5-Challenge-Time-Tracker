@@ -1,5 +1,13 @@
 # Weekend-5-Challenge-Time-Tracker
 
+Features:
+- Displays list of projects on 'Projects' page
+- Allows user to add a new project to the database
+- Displays list of entered tasks for each project with details on date of entry, duration of each task, and corresponding project,
+  sorted by date on the 'Entry History' page
+- Ability to enter a new task for a project to the database
+- Allows user to delete a project from the database 
+- Allows user to delete an entry from the database
 
 -------------
 SQL CREATE TABLE Queries
@@ -15,5 +23,5 @@ CREATE TABLE "entry"(
 	"date" DATE NOT NULL,
 	"start_time" TIME NOT NULL,
 	"end_time" TIME NOT NULL,
-	"project_id" INTEGER REFERENCES "project"
+	"project_id" INTEGER REFERENCES "project" NOT NULL
 );
